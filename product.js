@@ -65,6 +65,7 @@
   let busy = false;
   let lastGestureAt = 0;
   let wheelAccum = 0;
+  let touchStartX = 0;
   let touchStartY = 0;
   let touchActive = false;
   let introPlayed = false;
@@ -320,6 +321,7 @@
       return;
     }
     touchActive = true;
+    touchStartX = event.touches[0].clientX;
     touchStartY = event.touches[0].clientY;
   }
 
@@ -331,10 +333,16 @@
   function onTouchEnd(event) {
     if (!touchActive) return;
     touchActive = false;
+    const endX = event.changedTouches[0]?.clientX ?? touchStartX;
     const endY = event.changedTouches[0]?.clientY ?? touchStartY;
-    const delta = touchStartY - endY;
-    if (Math.abs(delta) < 45) return;
-    navigate(delta > 0 ? 1 : -1);
+    const deltaX = touchStartX - endX;
+    const deltaY = touchStartY - endY;
+
+    if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 35) {
+      navigate(deltaX > 0 ? 1 : -1);
+    } else if (Math.abs(deltaY) > 35) {
+      navigate(deltaY > 0 ? 1 : -1);
+    }
   }
 
   // Subtle pointer-driven tilt centered on the stage
