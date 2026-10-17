@@ -44,6 +44,7 @@
 
         return {
           sku,
+          title       : (item.title?.rendered || sku).trim(),
           series      : (acf.product_series || parseSeries(sku)).trim().toUpperCase(),
           description : (acf.product_short_desc || '').trim(),
           image,

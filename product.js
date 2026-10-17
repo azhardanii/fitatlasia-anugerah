@@ -39,12 +39,34 @@
     IT:  ['#0c0d10', '#1b1718', 'rgba(255,38,52,.34)']
   };
 
-  const titleLines = [
-    ['Equip the', 'movement.'],
-    ['Build the', 'facility.'],
-    ['Designed for', 'the room.'],
-    ['Move with', 'purpose.']
-  ];
+
+  /**
+   * Bangun HTML judul produk dari title WP secara dinamis.
+   * Pola: ceil(n/2) kata = bold, floor(n/2) kata = outline (di baris bawah).
+   *
+   * 1 kata  → semua bold              → "SQUAT."
+   * 2 kata  → 1 bold + 1 outline      → "ARM<br><span>CURL.</span>"
+   * 3 kata  → 2 bold + 1 outline      → "ARM CURL<br><span>MACHINE.</span>"
+   * 4 kata  → 2 bold + 2 outline      → "ARM CURL<br><span>MACHINE PRO.</span>"
+   */
+  function buildTitleHTML(titleStr) {
+    const raw   = (titleStr || '').trim();
+    const words = raw.split(/\s+/).filter(Boolean);
+    const n     = words.length;
+    if (n === 0) return 'Equipment.';
+
+    const boldCount    = Math.ceil(n / 2);
+    const outlineCount = n - boldCount; // = Math.floor(n/2)
+
+    if (outlineCount === 0) {
+      // 1 kata — semua bold, tidak ada outline
+      return words[0] + '.';
+    }
+
+    const boldPart    = words.slice(0, boldCount).join(' ');
+    const outlinePart = words.slice(boldCount).join(' ') + '.';
+    return `${boldPart}<br><span>${outlinePart}</span>`;
+  }
 
   const els = {
     imageA: $('#productImageA'),
@@ -96,7 +118,6 @@
   }
 
   function setText(item, index) {
-    const lines = titleLines[index % titleLines.length];
     if (els.series) els.series.textContent = `SERIES ${item.series}`;
     if (els.skuTitle) els.skuTitle.textContent = item.sku;
     if (els.number) els.number.textContent = `${String(index + 1).padStart(2, '0')} / ${String(products.length).padStart(2, '0')}`;
@@ -107,7 +128,7 @@
     if (els.quote) els.quote.href = `/contact/?product=${encodeURIComponent(item.sku)}`;
 
     if (els.title) {
-      els.title.innerHTML = `${lines[0]}<br><span>${lines[1]}</span>`;
+      els.title.innerHTML = buildTitleHTML(item.title || item.sku);
     }
 
     if (els.description) {
