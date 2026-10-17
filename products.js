@@ -88,6 +88,13 @@
     window.dispatchEvent(new CustomEvent('fitatlasia:ready', {
       detail: window.FIT_ATLASIA_PRODUCTS,
     }));
+
+    // Sembunyikan loader setelah data siap
+    const loader = document.getElementById('productLoader');
+    if (loader) {
+      // Tambah sedikit delay agar animasi masuk produk tidak tumpang tindih
+      setTimeout(() => loader.classList.add('hidden'), 100);
+    }
   }
 
   init();

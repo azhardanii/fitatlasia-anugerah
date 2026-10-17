@@ -46,6 +46,15 @@
   </div>
 
   <main id="productStage" class="product-stage" aria-live="polite" aria-atomic="true">
+    <!-- Loading overlay — hidden once WP API data arrives -->
+    <div id="productLoader" role="status" aria-label="Loading products">
+      <div class="loader-rings">
+        <span class="loader-dot"></span>
+      </div>
+      <div class="loader-brand">FIT ATLASIA</div>
+      <div class="loader-sub">Loading equipment catalog…</div>
+    </div>
+
     <div class="product-bg" aria-hidden="true"></div>
     <div class="product-vignette" aria-hidden="true"></div>
     <div class="product-glow product-glow-a" aria-hidden="true"></div>
@@ -149,8 +158,8 @@
   </main>
 
   <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
-  <script defer src="../products.js"></script>
-  <script defer src="../product.js"></script>
-  <script defer src="../app.js"></script>
+  <script defer src="../products.js?v=20261017d"></script>
+  <script defer src="../product.js?v=20261017d"></script>
+  <script defer src="../app.js?v=20261017d"></script>
 </body>
 </html>
