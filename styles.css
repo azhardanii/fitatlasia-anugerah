@@ -303,7 +303,7 @@ body.product-immersive .site-footer{display:none}
 
 /* ── Product Loading Overlay ─────────────────────────────────────── */
 #productLoader{
-  position:fixed;inset:0;z-index:9999;
+  position:absolute;inset:0;z-index:9999;
   display:flex;flex-direction:column;
   align-items:center;justify-content:center;
   background:#08090b;
@@ -350,6 +350,7 @@ body.product-immersive .site-footer{display:none}
   0%,100%{transform:scale(1);opacity:1}
   50%{transform:scale(.6);opacity:.4}
 }
+.product-bg{
   position:absolute;inset:0;z-index:-10;
   background:
     radial-gradient(circle at 50% 48%,var(--glow) 0%,rgba(227,6,19,.15) 30%,transparent 62%),

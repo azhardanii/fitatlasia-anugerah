@@ -12,7 +12,8 @@
     _fields  : 'id,title,acf,menu_order,_links,_embedded',
     orderby  : 'menu_order',
     order    : 'asc',
-    status   : 'publish',
+    // status=publish TIDAK perlu — WP REST API sudah default publish-only
+    // untuk request tanpa autentikasi. Menambahkannya malah return HTTP 400.
   });
 
   // Fallback statis jika API down
@@ -69,32 +70,31 @@
     return normalize(raw);
   }
 
+  function hideLoader() {
+    const loader = document.getElementById('productLoader');
+    if (loader) setTimeout(() => loader.classList.add('hidden'), 80);
+  }
+
   async function init() {
-    // Bersihkan sessionStorage lama yang mungkin berisi data draft
+    // Bersihkan sessionStorage lama
     try {
       for (const key of Object.keys(sessionStorage)) {
         if (key.startsWith('fit_products_')) sessionStorage.removeItem(key);
       }
-    } catch { /* private browsing — ignore */ }
+    } catch { /* private browsing */ }
 
     try {
       const data = await fetchProducts();
       window.FIT_ATLASIA_PRODUCTS = data.length ? data : makeFallback();
     } catch (err) {
-      console.warn('[FIT ATLASIA] API tidak tersedia, pakai fallback data.', err?.message);
+      console.warn('[FIT ATLASIA] API tidak tersedia, pakai fallback.', err?.message);
       window.FIT_ATLASIA_PRODUCTS = makeFallback();
     }
 
     window.dispatchEvent(new CustomEvent('fitatlasia:ready', {
       detail: window.FIT_ATLASIA_PRODUCTS,
     }));
-
-    // Sembunyikan loader setelah data siap
-    const loader = document.getElementById('productLoader');
-    if (loader) {
-      // Tambah sedikit delay agar animasi masuk produk tidak tumpang tindih
-      setTimeout(() => loader.classList.add('hidden'), 100);
-    }
+    hideLoader();
   }
 
   init();
