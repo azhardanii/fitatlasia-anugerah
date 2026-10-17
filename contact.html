@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#08090a">
+  <meta name="description" content="Contact PT Fit Atlasia Anugerah untuk konsultasi project fasilitas fitness, equipment, layout, pengadaan, dan instalasi.">
+  <link rel="icon" type="image/png" href="assets/fit-logo-mark.png"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="styles.css">
+  <title>Contact | FIT ATLASIA</title>
+</head>
+<body>
+  <a class="skip-link" href="#projectForm">Skip to project form</a><div class="progress"></div><div class="noise"></div><div class="cursor" id="cursor"></div>
+  <header class="site-nav"><a class="site-brand" href="index.html"><img src="https://fitatlasia.untukmu.site/wp-content/uploads/2026/10/fit-logo-white.webp" alt="Fit Atlasia Anugerah"></a><nav class="site-menu"><a href="index.html">Home</a><a href="about.html">About</a><a href="product.html">Product</a><a class="active" href="contact.html">Contact</a></nav><div class="nav-actions"><a class="nav-cta" href="#projectForm">Start a project ↗</a><button class="menu-toggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button></div></header>
+  <div class="mobile-panel"><nav><a href="index.html">Home</a><a href="about.html">About</a><a href="product.html">Product</a><a href="contact.html">Contact</a></nav></div>
+
+  <main id="main">
+    <section class="contact-grid page-section">
+      <div>
+        <div class="eyebrow">Contact / Project consultation</div>
+        <h1 class="display xl">Let's build<br><span style="color:var(--red)">the space.</span></h1>
+        <p class="body-copy" style="margin-top:30px">Ceritakan project kamu. Mulai dari kebutuhan equipment, konsep fasilitas, luas ruang, sampai rencana pengadaan dan instalasi.</p>
+        <div class="contact-meta">
+          <div class="contact-meta-card"><b>Direct Consultation / WhatsApp</b><span><a href="https://wa.me/6287719790910?text=Halo%20Admin%20Fit%20Atlasia,%20saya%20ingin%20konsultasi%20project%20dan%20kebutuhan%20alat%20fitness." target="_blank" rel="noopener noreferrer" style="color:#25d366;font-weight:600;display:inline-flex;align-items:center;gap:6px;margin-top:4px">WhatsApp Admin: +62 877-1979-0910 ↗</a></span></div>
+          <div class="contact-meta-card"><b>Service coverage</b><span>Seluruh wilayah Indonesia</span></div>
+          <div class="contact-meta-card"><b>Project support</b><span>Consultation · Equipment selection · Layout · Procurement · Installation</span></div>
+          <div class="contact-meta-card"><b>Client types</b><span>Gym · Fitness center · Hotel · Apartment · Corporate gym · Institution · Professional sports facility</span></div>
+        </div>
+      </div>
+      <div class="contact-form" id="projectForm">
+        <form id="contactForm" action="https://wa.me/6287719790910" method="get">
+          <div class="form-grid">
+            <div class="field"><label for="name">Nama</label><input id="name" name="name" required placeholder="Nama kamu / perusahaan"></div>
+            <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" required placeholder="email@perusahaan.com"></div>
+            <div class="field full"><label for="company">Company</label><input id="company" name="company" placeholder="Nama perusahaan / fasilitas"></div>
+            <div class="field full"><label for="project">Facility type</label><select id="project" name="project"><option value="gym">Gym / Fitness Center</option><option value="hotel">Hotel</option><option value="apartment">Apartment</option><option value="corporate">Corporate Gym</option><option value="institution">Institution</option><option value="professional">Professional Facility</option><option value="other">Other</option></select></div>
+            <div class="field full"><label for="location">Project location</label><input id="location" name="location" placeholder="Kota / provinsi"></div>
+            <div class="field full"><label for="brief">Project brief</label><textarea id="brief" name="brief" required placeholder="Ceritakan lokasi, ukuran ruang, kebutuhan alat, target pengguna, atau kebutuhan lain."></textarea></div>
+          </div>
+          <button class="submit-btn" type="submit">Send brief via WhatsApp ↗</button>
+          <div class="form-note">Data formulir akan otomatis terformat menjadi pesan dan dialihkan langsung ke WhatsApp Admin Fit Atlasia untuk konsultasi instan.</div>
+          <div class="form-status" id="formStatus" role="status"></div>
+        </form>
+      </div>
+    </section>
+
+    <section class="home-image page-section has-footer">
+      <img src="assets/facility.webp" alt="Fitness facility" loading="lazy">
+      <div class="inner"><div><div class="eyebrow">Ready when you are</div><h2 class="display lg">From empty<br><span style="color:var(--red)">space to experience.</span></h2></div></div>
+      <footer class="site-footer"><span>PT. FIT ATLASIA ANUGERAH</span><div class="footer-links"><a href="index.html">Home</a><a href="about.html">About</a><a href="product.html">Product</a></div><span>Contact · Consultation · Project Brief</span></footer>
+    </section>
+  </main>
+  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script><script defer src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script><script defer src="app.js"></script>
+</body></html>
