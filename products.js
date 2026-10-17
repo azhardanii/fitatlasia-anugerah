@@ -11,9 +11,10 @@
     _fields  : 'id,title,acf,menu_order,_links,_embedded',
     orderby  : 'menu_order',
     order    : 'asc',
+    status   : 'publish',   // hanya produk yang sudah Published
   });
 
-  const CACHE_KEY = 'fit_products_v3';
+  const CACHE_KEY = 'fit_products_v4'; // bump version = cache lama otomatis invalid
   const CACHE_TTL = 5 * 60 * 1000; // 5 menit
 
   // Fallback static list — dipakai jika API tidak bisa diakses
