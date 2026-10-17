@@ -9,11 +9,8 @@
   const PARAMS = new URLSearchParams({
     per_page : '100',
     _embed   : '1',
-    _fields  : 'id,title,acf,menu_order,_links,_embedded',
-    orderby  : 'menu_order',
-    order    : 'asc',
-    // status=publish TIDAK perlu — WP REST API sudah default publish-only
-    // untuk request tanpa autentikasi. Menambahkannya malah return HTTP 400.
+    // orderby=menu_order menyebabkan HTTP 400 di setup WP ini
+    // Sorting dilakukan di frontend berdasarkan field ACF product_order
   });
 
   // Fallback statis jika API down
