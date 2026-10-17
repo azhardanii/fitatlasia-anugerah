@@ -167,15 +167,17 @@
   function setLayerImage(img, sku, eager = false, item = null) {
     if (!img) return;
     const src = imageSrc(sku, item);
-    img.classList.remove('img-loaded');
+    img.style.opacity = '0';               // pastikan tersembunyi
+    img.style.transition = 'opacity .35s ease';
     img.alt = `FIT ATLASIA equipment ${sku}`;
     img.loading = eager ? 'eager' : 'lazy';
     img.decoding = 'async';
-    const onReady = () => img.classList.add('img-loaded');
+    const onReady = () => { img.style.opacity = '1'; };
     img.onload  = onReady;
-    img.onerror = onReady; // tetap tampilkan meski gagal, jangan stuck hidden
+    img.onerror = onReady; // jangan stuck hidden jika gambar gagal load
     img.src = src;
-    if (img.complete && img.naturalWidth > 0) onReady(); // sudah di-cache browser
+    // Jika gambar sudah di-cache browser, onload tidak fire — cek manual
+    if (img.complete && img.naturalHeight > 0) onReady();
   }
 
   function animateContent(direction) {
