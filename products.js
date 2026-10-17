@@ -14,7 +14,7 @@
     status   : 'publish',   // hanya produk yang sudah Published
   });
 
-  const CACHE_KEY = 'fit_products_v4'; // bump version = cache lama otomatis invalid
+  const CACHE_KEY = 'fit_products_v5'; // v5: force fresh fetch, fix draft filter
   const CACHE_TTL = 5 * 60 * 1000; // 5 menit
 
   // Fallback static list — dipakai jika API tidak bisa diakses
