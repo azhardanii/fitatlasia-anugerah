@@ -104,7 +104,7 @@
     if (els.stageSeries) els.stageSeries.textContent = item.series;
     if (els.navIndex) els.navIndex.textContent = String(index + 1).padStart(2, '0');
     if (els.waBtn) els.waBtn.href = getWaLink(item);
-    if (els.quote) els.quote.href = `contact.html?product=${encodeURIComponent(item.sku)}`;
+    if (els.quote) els.quote.href = `/contact/?product=${encodeURIComponent(item.sku)}`;
 
     if (els.title) {
       els.title.innerHTML = `${lines[0]}<br><span>${lines[1]}</span>`;
@@ -167,10 +167,15 @@
   function setLayerImage(img, sku, eager = false, item = null) {
     if (!img) return;
     const src = imageSrc(sku, item);
+    img.classList.remove('img-loaded');
     img.alt = `FIT ATLASIA equipment ${sku}`;
     img.loading = eager ? 'eager' : 'lazy';
     img.decoding = 'async';
+    const onReady = () => img.classList.add('img-loaded');
+    img.onload  = onReady;
+    img.onerror = onReady; // tetap tampilkan meski gagal, jangan stuck hidden
     img.src = src;
+    if (img.complete && img.naturalWidth > 0) onReady(); // sudah di-cache browser
   }
 
   function animateContent(direction) {

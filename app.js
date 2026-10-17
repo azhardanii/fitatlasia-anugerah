@@ -44,10 +44,12 @@
     menuToggle?.setAttribute('aria-expanded', 'false');
   }));
 
-  const current = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+  // Active nav: match based on pathname segment (works with clean URLs like /product/)
+  const pathSegment = '/' + (location.pathname.split('/').filter(Boolean)[0] || '');
   $$('.site-menu a,.mobile-panel a').forEach(a => {
-    const href = (a.getAttribute('href') || '').split('?')[0].split('#')[0].toLowerCase();
-    const active = href === current || (current === '' && href === 'index.html');
+    const href = (a.getAttribute('href') || '').split('?')[0].split('#')[0].replace(/\/$/, '') || '/';
+    const norm = pathSegment.replace(/\/$/, '') || '/';
+    const active = href === norm || (norm === '' && href === '/');
     if (active) a.classList.add('active');
   });
 

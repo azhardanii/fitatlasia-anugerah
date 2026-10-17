@@ -425,7 +425,12 @@ body.product-immersive .site-footer{display:none}
   transform:translate3d(0,0,0);
   user-select:none;
   -webkit-user-drag:none;
+  opacity:0;
+  transition:opacity .35s ease;
 }
+.product-image-layer img.img-loaded{opacity:1}
+/* Prevent broken image icon from ever showing */
+img:not([src]),img[src=""]{visibility:hidden!important}
 
 .product-image-caption{position:absolute;left:50%;bottom:16px;translate:-50% 0;text-align:center;z-index:6;width:100%;pointer-events:none}
 .product-image-caption strong{display:block;font-family:var(--display);font-weight:700;font-size:clamp(18px,1.6vw,26px);line-height:.95;letter-spacing:-.02em}
