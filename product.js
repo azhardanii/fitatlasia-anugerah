@@ -21,7 +21,7 @@
   const gsapReady = !!window.gsap;
 
   // Gunakan image URL dari WordPress jika ada, fallback ke pola lama
-  const imageBase = 'cms.fitatlasia.com/wp-content/uploads/2026/10/';
+  const imageBase = 'fitatlasia.untukmu.site/wp-content/uploads/2026/10/';
   const imageSrc = (sku, item = null) => {
     if (item?.image) return item.image;
     const protocol = window.location.protocol === 'https:' ? 'https:' : 'http:';
