@@ -5,7 +5,7 @@
  * Fallback ke data statis jika API tidak bisa diakses.
  */
 (() => {
-  const WP_API = 'https://fitatlasia.untukmu.site/wp-json/wp/v2/products';
+  const WP_API = 'https://cms.fitatlasia.com/wp-json/wp/v2/products';
   const PARAMS = new URLSearchParams({
     per_page : '100',
     _embed   : '1',
